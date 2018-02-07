@@ -35,7 +35,6 @@ export const gameFinished = (whoWon, players, wonCount) => {
 
   const playerIndex = players.indexOf(whoWon);
   let newWon = [];
-  let newLose = [];
   if (playerIndex === 0) {
     let w = wonCount[0] + 1;
     newWon = [w, wonCount[1]];

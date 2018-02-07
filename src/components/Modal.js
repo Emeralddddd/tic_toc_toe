@@ -5,7 +5,6 @@ import {
   ModalHeader,
   ModalBody,
   ModalFooter,
-  Form,
   FormGroup,
   Label,
   Input
@@ -79,7 +78,7 @@ class EnterNamesModal extends React.Component {
   };
 
   render() {
-    const { isEnabled, player1, player2 } = this.state;
+    const { player1, player2 } = this.state;
     const errors = this.validate(player1, player2);
     const isDisabled = Object.keys(errors).some(x => errors[x]);
 
@@ -131,7 +130,7 @@ class EnterNamesModal extends React.Component {
           </ModalBody>
           <ModalFooter>
             <Button
-              disabled={isEnabled}
+              disabled={isDisabled}
               color="primary"
               onClick={this.handleSubmit}
             >

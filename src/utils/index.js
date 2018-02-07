@@ -1,5 +1,3 @@
-import move from "../reducers/move";
-
 export const getWinner = cells => {
   const winningStates = [
     [0, 1, 2],

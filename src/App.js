@@ -3,7 +3,7 @@ import "./App.css";
 
 import React from "react";
 import { connect } from "react-redux";
-import { Jumbotron, Container, Alert } from "reactstrap";
+import { Jumbotron, Alert } from "reactstrap";
 import Cell from "./components/Cell";
 import Button from "./components/Button";
 import Line from "./components/Line";
@@ -17,7 +17,6 @@ import {
   gameFinished
 } from "./actions";
 import { getStatusMessage, isValidMove, getWinner, whoWon } from "./utils";
-import players from "./reducers/players";
 
 class App extends React.Component {
   constructor(props) {
