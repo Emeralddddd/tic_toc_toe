@@ -1,6 +1,6 @@
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
-Tic Toc Toe game is deployed at [heroku/react-tic-toc-toe](https://react-tic-toc-toe.herokuapp.com/)
+Tic Toc Toe game is deployed at [heroku/joy-tic-toc-toe](https://joy-tic-toc-toe.herokuapp.com/)
 
 ## Available Scripts
 
