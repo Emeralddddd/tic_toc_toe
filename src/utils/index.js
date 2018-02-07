@@ -1,6 +1,6 @@
 import move from "../reducers/move";
 
-const getWinner = cells => {
+export const getWinner = cells => {
   const winningStates = [
     [0, 1, 2],
     [3, 4, 5],
@@ -13,6 +13,7 @@ const getWinner = cells => {
   ];
 
   var winner = undefined;
+  var winBlock = undefined;
   winningStates.forEach(winningState => {
     const potentialWinner = cells[winningState[0]];
     if (potentialWinner !== undefined) {
@@ -20,16 +21,23 @@ const getWinner = cells => {
       winningState.forEach(winningCell => {
         if (cells[winningCell] !== potentialWinner) hasWonCurrentState = false;
       });
-      if (hasWonCurrentState) winner = potentialWinner;
+      if (hasWonCurrentState) { 
+        winBlock = winningState; 
+        winner = potentialWinner;
+      };
     }
   });
 
-  return winner;
+  return {
+    winningState: winBlock,
+    winner
+  };
 };
 
 const isTie = cells => {
   // No tie when the game is won
-  if (getWinner(cells) !== undefined) return false;
+  const winner = getWinner(cells);
+  if ( winner.winner !== undefined) return false;
 
   var isTie = true;
   cells.forEach(cell => {
@@ -44,7 +52,8 @@ export const isValidMove = (cells, cell) => {
   if (cells[cell] !== undefined) return false;
 
   // Do not update when the game is over
-  if (getWinner(cells) !== undefined || isTie(cells)) return false;
+  const w = getWinner(cells);
+  if (w.winner !== undefined || isTie(cells)) return false;
 
   return true;
 };
@@ -54,9 +63,9 @@ export const getStatusMessage = (cells, move, players) => {
 
   const symbol = move === "O" ? 0 : 1;
 
-  const winner = getWinner(cells);
-  if (winner !== undefined) {
-    const sy = winner === "O" ? 0 : 1;
+  const w = getWinner(cells);
+  if (w.winner !== undefined) {
+    const sy = w.winner === "O" ? 0 : 1;
     return `${players[sy]} has won the game!`;
   } else if (players[symbol] === undefined) {
     return "";

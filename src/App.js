@@ -9,7 +9,7 @@ import Button from "./components/Button";
 import Line from "./components/Line";
 import Modal from "./components/Modal";
 import { addMove, resetGame, savePlayers, clearPlayersState } from "./actions";
-import { getStatusMessage, isValidMove } from "./utils";
+import { getStatusMessage, isValidMove, getWinner } from "./utils";
 import players from "./reducers/players";
 
 class App extends React.Component {
@@ -22,6 +22,7 @@ class App extends React.Component {
 
   render() {
     const game = this;
+    const winCells = getWinner(game.props.cells);
     return (
       <div>
         <Modal
@@ -36,13 +37,14 @@ class App extends React.Component {
         <Jumbotron className="liner-Gradient">
           <div>
             <h1 className="display-4">Tic Toc Toe</h1>
-            <Line message={this.props.message} />
+            <Line message={game.props.message} />
           </div>
           <div className="grid">
-            {this.props.cells.map((value, cell) => (
+            {game.props.cells.map((value, cell) => (
               <Cell
                 key={cell}
                 state={value}
+                winner={winCells.winner && winCells.winningState.includes(cell)}
                 onPress={evt => {
                   game.props.onSetCell(cell, this.props.cells, this.props.move);
                 }}
