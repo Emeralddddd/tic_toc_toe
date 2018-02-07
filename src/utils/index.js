@@ -14,6 +14,7 @@ export const getWinner = cells => {
 
   var winner = undefined;
   var winBlock = undefined;
+  var isWinner = false;
   winningStates.forEach(winningState => {
     const potentialWinner = cells[winningState[0]];
     if (potentialWinner !== undefined) {
@@ -21,14 +22,16 @@ export const getWinner = cells => {
       winningState.forEach(winningCell => {
         if (cells[winningCell] !== potentialWinner) hasWonCurrentState = false;
       });
-      if (hasWonCurrentState) { 
-        winBlock = winningState; 
+      if (hasWonCurrentState) {
+        winBlock = winningState;
         winner = potentialWinner;
-      };
+        isWinner = true;
+      }
     }
   });
 
   return {
+    isWinner: isWinner,
     winningState: winBlock,
     winner
   };
@@ -37,7 +40,7 @@ export const getWinner = cells => {
 const isTie = cells => {
   // No tie when the game is won
   const winner = getWinner(cells);
-  if ( winner.winner !== undefined) return false;
+  if (winner.winner !== undefined) return false;
 
   var isTie = true;
   cells.forEach(cell => {
@@ -71,5 +74,16 @@ export const getStatusMessage = (cells, move, players) => {
     return "";
   } else {
     return `${players[symbol]}'s turn`;
+  }
+};
+
+export const whoWon = (cells, players) => {
+  const w = getWinner(cells);
+  if (w.winner === "O") {
+    return players[0];
+  } else if (w.winner === "X") {
+    return players[1];
+  } else {
+    return;
   }
 };

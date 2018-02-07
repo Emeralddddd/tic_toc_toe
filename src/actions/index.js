@@ -1,7 +1,7 @@
 export const savePlayers = players => {
   return {
     type: "SAVE_PLAYERS",
-    players: players
+    list: players
   };
 };
 
@@ -22,5 +22,22 @@ export const addMove = (cell, player) => {
 export const resetGame = () => {
   return {
     type: "RESET"
+  };
+};
+
+export const gameFinished = (whoWon, players, wonCount) => {
+  const playerIndex = players.indexOf(whoWon);
+  let newWon = [];
+  let newLose = [];
+  if (playerIndex === 0) {
+    let w = wonCount[0] + 1;
+    newWon = [w, wonCount[1]];
+  } else {
+    let w = wonCount[1] + 1;
+    newWon = [wonCount[0], w];
+  }
+  return {
+    type: "GAME_FINISHED",
+    won: newWon
   };
 };
