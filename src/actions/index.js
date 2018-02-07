@@ -26,6 +26,13 @@ export const resetGame = () => {
 };
 
 export const gameFinished = (whoWon, players, wonCount) => {
+  if (whoWon === 'tie' || whoWon === undefined) {
+    return {
+      type: "GAME_FINISHED",
+      won: wonCount
+    };
+  }
+
   const playerIndex = players.indexOf(whoWon);
   let newWon = [];
   let newLose = [];

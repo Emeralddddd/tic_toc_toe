@@ -79,10 +79,13 @@ export const getStatusMessage = (cells, move, players) => {
 
 export const whoWon = (cells, players) => {
   const w = getWinner(cells);
-  if (w.winner === "O") {
+  const tie = isTie(cells);
+  if (w.winner === "O" && !tie) {
     return players[0];
-  } else if (w.winner === "X") {
+  } else if (w.winner === "X" && !tie) {
     return players[1];
+  } else if (tie) {
+    return 'tie'
   } else {
     return;
   }
