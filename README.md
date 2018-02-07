@@ -24,3 +24,12 @@ Your app is ready to be deployed!
 
 See the section about [deployment](#deployment) for more information.
 
+## Game Flow
+
+* Enter Player 1 and Player 2.
+* Play Game until results comes out.
+* User can check states. (Total Wins and Total Loses).
+* If user press new players State will be cleared and process will start from the beginning.
+
+
+
