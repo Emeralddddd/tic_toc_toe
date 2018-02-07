@@ -48,7 +48,7 @@ h1.display-4 {
 .winning-cell {
   display: inline-block;
   float: left;
-  background-color: #4466ae;
+  background-color: rgb(60, 59, 59);
   width: 100px;
   height: 100px;
   margin: 5px;
