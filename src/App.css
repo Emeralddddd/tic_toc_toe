@@ -1,77 +1,98 @@
 h1.display-4 {
-  text-align: center;
-  justify-content: center;
-  align-content: center;
-  font-family: 'Rammetto One';
-  color: azure;
-  margin-top: -40px;
+    text-align: center;
+    justify-content: center;
+    align-content: center;
+    font-family: 'Rammetto One';
+    color: azure;
+    margin-top: -40px;
 }
 
 .liner-Gradient {
-  background: linear-gradient(141deg, #0fb8ad 0%, #1fc8db 51%, #2cb5e8 75%)
+    background: linear-gradient(141deg, #0fb8ad 0%, #1fc8db 51%, #2cb5e8 75%)
 }
 
 .grid, .panel {
-  padding-top: 20px;
-  width: 360px;
-  text-align: center;
-  margin: auto;
-  clear: both;
+    padding-top: 20px;
+    width: 360px;
+    text-align: center;
+    margin: auto;
+    clear: both;
+}
+
+.grid {
+    float: left;
+    margin-left: 200px;
 }
 
 .button {
-  display: inline-block;
-  margin: 8px;
-  background-color: transparent;
-  color: #FFFFFF;
-  cursor: pointer;
-  font-size: 50px;
-  font-family: 'Rammetto One';
+    display: inline-block;
+    margin: 8px;
+    background-color: transparent;
+    color: #FFFFFF;
+    cursor: pointer;
+    font-size: 50px;
+    font-family: 'Rammetto One';
 }
 
 .cell {
-  display: inline-block;
-  float: left;
-  background-color: #4466ae;
-  width: 100px;
-  height: 100px;
-  margin: 5px;
-  color: rgb(255, 251, 251);
-  text-align: center;
-  font-size: 70px;
-  font-family: 'Bungee Inline';
-  line-height: 100px;
-  cursor: pointer;
-  border-radius: 50px;
+    display: inline-block;
+    float: left;
+    background-color: #4466ae;
+    width: 100px;
+    height: 100px;
+    margin: 5px;
+    color: rgb(255, 251, 251);
+    text-align: center;
+    font-size: 70px;
+    font-family: 'Bungee Inline';
+    line-height: 100px;
+    cursor: pointer;
+    border-radius: 50px;
+    position: relative;
+}
+
+.text-input {
+    float: right;
+    height: 300px;
+    width: 300px;
+    margin-top: 30px;
+    margin-right: 200px;
+    opacity: 70%;
+    background-color:transparent;
 }
 
 .winning-cell {
-  display: inline-block;
-  float: left;
-  background-color: rgb(60, 59, 59);
-  width: 100px;
-  height: 100px;
-  margin: 5px;
-  color: rgb(0, 249, 91);
-  text-align: center;
-  font-size: 70px;
-  font-family: 'Bungee Inline';
-  line-height: 100px;
-  cursor: pointer;
-  border-radius: 50px;
+    display: inline-block;
+    float: left;
+    background-color: rgb(60, 59, 59);
+    width: 100px;
+    height: 100px;
+    margin: 5px;
+    color: rgb(0, 249, 91);
+    text-align: center;
+    font-size: 70px;
+    font-family: 'Bungee Inline';
+    line-height: 100px;
+    cursor: pointer;
+    border-radius: 50px;
 }
 
 .cell:nth-child(3n+1) {
-  clear: left;
+    clear: left;
 }
 
 .line {
-  display: block;
-  width: 100%;
-  font-size: 30px;
-  line-height: 60px;
-  text-align: center;
-  background-color: transparent;
-  font-family: 'Maven Pro';
-  color: #FFFFFF;
+    display: block;
+    width: 100%;
+    font-size: 30px;
+    line-height: 60px;
+    text-align: center;
+    background-color: transparent;
+    font-family: 'Maven Pro';
+    color: #FFFFFF;
+}
+
+#submitButton{
+  margin-top: 20px;
+  float:right;
 }
