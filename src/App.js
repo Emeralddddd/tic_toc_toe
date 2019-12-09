@@ -8,7 +8,7 @@ import Cell from "./components/Cell";
 import Button from "./components/Button";
 import Line from "./components/Line";
 import Modal from "./components/Modal";
-import Input from "./components/Input"
+import InputComponent from "./components/Input"
 import GameStats from "./components/GameStats";
 import {
     addMove,
@@ -82,7 +82,7 @@ class App extends React.Component {
                                 />
                             ))}
                         </div>
-                        <Input/>
+                        <InputComponent/>
                     </div>
                     <div className="panel">
                         <Button
