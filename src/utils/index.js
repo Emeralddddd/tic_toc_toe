@@ -50,8 +50,10 @@ const isTie = cells => {
 
 export const isValidMove = (cells, cell) => {
   // Invalid move when the cell is not free
-  if (cells[cell] !== undefined) return false;
-
+  if (cells[cell] !== undefined) {
+    alert("this location is occupied!");
+    return false;
+  }
   // Do not update when the game is over
   const w = getWinner(cells);
   if (w.winner !== undefined || isTie(cells)) return false;

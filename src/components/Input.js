@@ -16,7 +16,7 @@ class InputComponent extends React.Component {
             inputValue: e.target.value
         })
     };
-    handleClick = (e) => {
+    handleClick = () => {
         const httpRequest = new XMLHttpRequest();
         httpRequest.open('POST', 'http://127.0.0.1:8080/test', true);
         httpRequest.setRequestHeader("Content-type", "application/json");
@@ -34,11 +34,10 @@ class InputComponent extends React.Component {
     };
 
     render() {
-        const {inputValue} = this.state;
         return <div className="text-input">
             <div>
-                <TextArea placeholder="Type you text" autoSize={{minRows:3,maxRows:15}}/>
-                <Button type="primary">提交</Button>
+                <TextArea value={this.state.inputValue} placeholder="Type you text" autoSize={{minRows:3,maxRows:15}} onChange={(e)=>this.handleTextAreaChange(e)}/>
+                <Button type="primary" onClick={()=>this.handleClick()}>提交</Button>
             </div>
         </div>;
     }
