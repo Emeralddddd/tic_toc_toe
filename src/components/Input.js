@@ -7,7 +7,8 @@ class InputComponent extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            inputValue: ''
+            inputValue: '',
+            last:0
         }
     }
 
@@ -25,9 +26,13 @@ class InputComponent extends React.Component {
             if (httpRequest.readyState === 4 && httpRequest.status === 200) {//验证请求是否发送成功
                 const i = JSON.parse(httpRequest.responseText).index;//获取到服务端返回的数据
                 let cell = document.getElementById("grid").children[i];
+                let oldcell = document.getElementById("grid").children[this.state.last];
+                cell.classList.add("last-add");
+                oldcell.classList.remove("last-add");
                 cell.click();
                 this.setState({
-                    inputValue: ''
+                    inputValue: '',
+                    last:i
                 })
             }
         }

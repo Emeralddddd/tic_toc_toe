@@ -23,3 +23,5 @@ yarn-error.log*
 .idea/
 package-lock.json
 .vscode/
+
+tic_toc_toe.code-workspace
