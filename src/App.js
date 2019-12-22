@@ -9,6 +9,7 @@ import Button from "./components/Button";
 import Line from "./components/Line";
 import Modal from "./components/Modal";
 import GameStats from "./components/GameStats";
+import Text from './components/Text'
 import {
   addMove,
   resetGame,
@@ -68,17 +69,24 @@ class App extends React.Component {
             <h1 className="display-4">Tic Toc Toe</h1>
             <Line message={message} />
           </div>
-          <div className="grid">
-            {cells.map((value, cell) => (
-              <Cell
-                key={cell}
-                state={value}
-                winner={winCells.winner && winCells.winningState.includes(cell)}
-                onPress={evt => {
-                  onSetCell(cell, cells, move);
-                }}
-              />
-            ))}
+          <div id="body">
+            <div className="grid">
+              {cells.map((value, cell) => (
+                <Cell
+                  key={cell}
+                  state={value}
+                  winner={winCells.winner && winCells.winningState.includes(cell)}
+                  onPress={evt => {
+                    onSetCell(cell, cells, move);
+                  }}
+                />
+              ))}·
+          </div>
+            <Text
+              onPress={(cell) => {
+                onSetCell(cell, cells, move);
+              }}
+            />
           </div>
           <div className="panel">
             <Button
@@ -88,8 +96,8 @@ class App extends React.Component {
                 whoWon
                   ? onReset(whoWon, players, wonCount)
                   : this.setState({
-                      visible: true
-                    });
+                    visible: true
+                  });
               }}
             />
           </div>

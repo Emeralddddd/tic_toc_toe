@@ -19,6 +19,27 @@ h1.display-4 {
   clear: both;
 }
 
+.grid {
+  -webkit-flex: 1;
+  flex: 1;
+  padding-right: 50px;
+}
+
+.text-area {
+  -webkit-flex: 1;
+  flex: 1;
+  transform: translate(0,10%);
+}
+
+.text-input {
+  height: 150px;
+  width: 200px;
+}
+
+.sbutton {
+  float:right;
+}
+
 .button {
   display: inline-block;
   margin: 8px;
@@ -29,9 +50,10 @@ h1.display-4 {
   font-family: 'Rammetto One';
 }
 
+
 .cell {
   display: inline-block;
-  float: left;
+  float: right;
   background-color: #4466ae;
   width: 100px;
   height: 100px;
@@ -62,7 +84,7 @@ h1.display-4 {
 }
 
 .cell:nth-child(3n+1) {
-  clear: left;
+  clear: right;
 }
 
 .line {
@@ -74,4 +96,9 @@ h1.display-4 {
   background-color: transparent;
   font-family: 'Maven Pro';
   color: #FFFFFF;
+}
+
+#body {
+  display:flex;
+  display: -webkit-flex;
 }
