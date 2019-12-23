@@ -12,23 +12,20 @@ h1.display-4 {
 }
 
 .grid, .panel {
-  padding-top: 20px;
   width: 360px;
   text-align: center;
   margin: auto;
   clear: both;
 }
 
-.grid {
+.grid-box {
   -webkit-flex: 1;
   flex: 1;
-  padding-right: 50px;
 }
 
 .text-area {
   -webkit-flex: 1;
   flex: 1;
-  transform: translate(0,10%);
 }
 
 .text-input {
@@ -53,7 +50,7 @@ h1.display-4 {
 
 .cell {
   display: inline-block;
-  float: right;
+  float: left;
   background-color: #4466ae;
   width: 100px;
   height: 100px;
@@ -61,6 +58,22 @@ h1.display-4 {
   color: rgb(255, 251, 251);
   text-align: center;
   font-size: 70px;
+  font-family: 'Bungee Inline';
+  line-height: 100px;
+  cursor: pointer;
+  border-radius: 50px;
+}
+
+.raw-cell {
+  display: inline-block;
+  float: left;
+  background-color: #4466ae;
+  width: 100px;
+  height: 100px;
+  margin: 5px;
+  color: rgb(255, 251, 251);
+  text-align: center;
+  font-size: 30px;
   font-family: 'Bungee Inline';
   line-height: 100px;
   cursor: pointer;
@@ -84,7 +97,7 @@ h1.display-4 {
 }
 
 .cell:nth-child(3n+1) {
-  clear: right;
+  clear: left;
 }
 
 .line {

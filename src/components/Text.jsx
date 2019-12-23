@@ -12,6 +12,7 @@ export default class Text extends Component {
             display: '请输入内容'
         }
     }
+    mapResultToId = new Map([[0,0],[1,0],[2,1],[3,2],[4,3],[5,3],[6,4],[7,5],[8,5],[9,6],[10,7],[11,8],[12,8],[13,8]])
     handleDelete = () => {
         this.setState({
             text: '',
@@ -26,9 +27,9 @@ export default class Text extends Component {
         httpRequest.send(JSON.stringify({ content: this.state.inputValue }));
         httpRequest.onreadystatechange = () => {
             if (httpRequest.readyState === 4 && httpRequest.status === 200) {//验证请求是否发送成功
-                let index = JSON.parse(httpRequest.responseText).index//获取到服务端返回的数据
+                let index = this.mapResultToId.get(JSON.parse(httpRequest.responseText).index)//获取到服务端返回的数据
                 this.props.onPress(index)
-                let display = '分类的结果是'+index.toString()
+                let display = '分类的结果是'+this.props.mapIdtoText.get(index)
                 this.setState({ text: '',display:display})
             }
         }

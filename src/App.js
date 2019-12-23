@@ -18,7 +18,6 @@ import {
   gameFinished
 } from "./actions";
 import { getStatusMessage, isValidMove, getWinner, whoWon } from "./utils";
-
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -36,6 +35,7 @@ class App extends React.Component {
   }
 
   render() {
+    var mapIdtoText = new Map([[0,'公司'],[1,'艺术'],[2,'体育'],[3,'新闻'],[4,'建筑'],[5,'自然'],[6,'动物'],[7,'植物'],[8,'文学']])
     const game = this;
     const {
       cells,
@@ -70,19 +70,23 @@ class App extends React.Component {
             <Line message={message} />
           </div>
           <div id="body">
-            <div className="grid">
-              {cells.map((value, cell) => (
-                <Cell
-                  key={cell}
-                  state={value}
-                  winner={winCells.winner && winCells.winningState.includes(cell)}
-                  onPress={evt => {
-                    onSetCell(cell, cells, move);
-                  }}
-                />
-              ))}·
+            <div className="grid-box">
+              <div className="grid">
+                {cells.map((value, cell) => (
+                  <Cell
+                    key={cell}
+                    display={mapIdtoText.get(cell)}
+                    state={value}
+                    winner={winCells.winner && winCells.winningState.includes(cell)}
+                    onPress={evt => {
+                      onSetCell(cell, cells, move);
+                    }}
+                  />
+                ))}·
           </div>
+            </div>
             <Text
+              mapIdtoText = {mapIdtoText}
               onPress={(cell) => {
                 onSetCell(cell, cells, move);
               }}
