@@ -2,7 +2,9 @@ import React, { Component } from 'react'
 import "../App.css"
 // import { Input } from 'antd'
 // import { Button } from 'antd'
+import axios from 'axios'
 import { Input, Button } from 'reactstrap'
+axios.defaults.timeout=5000
 export default class Text extends Component {
     constructor(props) {
         super(props)
@@ -20,28 +22,22 @@ export default class Text extends Component {
         })
     }
     handleSubmit = () => {
-        const httpRequest = new XMLHttpRequest();
-        this.setState({ display: '正在提交...' })
-        httpRequest.open('POST', 'http://127.0.0.1:4555/result', true);
-        httpRequest.setRequestHeader("content-type", "application/json");
-        httpRequest.send(JSON.stringify({"content": this.state.text }));
-        // httpRequest.send(JSON.stringify({
-        //     "content": "The New York Times is an American newspaper based in New York City with worldwide influence and readership. "
-        // }));
-        httpRequest.onreadystatechange = () => {
-            if (httpRequest.readyState === 4 && httpRequest.status === 200) {//验证请求是否发送成功
-                let index = this.mapResultToId.get(JSON.parse(httpRequest.responseText).index-1)//获取到服务端返回的数据
-                console.log(index)
-                this.props.onPress(index)
-                let display = '分类的结果是' + this.props.mapIdtoText.get(index)
+        axios.post('http://127.0.0.1:4555/result',{"content": this.state.text}).then(res=>{
+            let index = this.mapResultToId.get(res.data.index-1)
+            this.props.onPress(index)
+            let display = '分类的结果是:' + this.props.mapIdtoText.get(index)
                 this.setState({ text: '', display: display })
-            }
-        }
+        }).catch(e=>{
+            console.log(e)
+            this.setState({
+                display:'请求错误，请重试'
+            })
+        })
     }
     handleChange = (e) => {
         this.setState({
             text: e.target.value,
-            display: '选择提交或者清除',
+            display: '选择提交或者清除', 
         })
     }
     render() {
