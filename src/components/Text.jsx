@@ -22,7 +22,7 @@ export default class Text extends Component {
     handleSubmit = () => {
         const httpRequest = new XMLHttpRequest();
         this.setState({ display: '正在提交...' })
-        httpRequest.open('POST', 'http://10.24.9.203:4555/result', true);
+        httpRequest.open('POST', 'http://127.0.0.1:4555/result', true);
         httpRequest.setRequestHeader("content-type", "application/json");
         httpRequest.send(JSON.stringify({"content": this.state.text }));
         // httpRequest.send(JSON.stringify({

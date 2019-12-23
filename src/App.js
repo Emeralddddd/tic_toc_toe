@@ -35,7 +35,7 @@ class App extends React.Component {
   }
 
   render() {
-    var mapIdtoText = new Map([[0,'公司'],[1,'艺术'],[2,'体育'],[3,'新闻'],[4,'建筑'],[5,'自然'],[6,'动物'],[7,'植物'],[8,'文学']])
+    var mapIdtoText = new Map([[0,'公司'],[1,'艺术'],[2,'体育'],[3,'人物'],[4,'建筑'],[5,'自然'],[6,'动物'],[7,'植物'],[8,'文学']])
     const game = this;
     const {
       cells,
@@ -183,7 +183,8 @@ const mapDispatchToProps = dispatch => {
   return {
     dispatch,
     onSetCell: (cell, cells, move) => {
-      if (isValidMove(cells, cell)) dispatch(addMove(cell, move));
+      if (isValidMove(cells, cell)) dispatch(addMove(cell, move))
+      else alert('Already occupied')
     },
     onReset: (whoWon, players, wonCount) => {
       dispatch(resetGame());
