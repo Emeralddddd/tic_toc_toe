@@ -12,7 +12,7 @@ export default class Text extends Component {
             display: '请输入内容'
         }
     }
-    mapResultToId = new Map([[0,0],[1,0],[2,1],[3,2],[4,3],[5,3],[6,4],[7,5],[8,5],[9,6],[10,7],[11,8],[12,8],[13,8]])
+    mapResultToId = new Map([[0, 0], [1, 0], [2, 1], [3, 2], [4, 3], [5, 3], [6, 4], [7, 5], [8, 5], [9, 6], [10, 7], [11, 8], [12, 8], [13, 8]])
     handleDelete = () => {
         this.setState({
             text: '',
@@ -21,16 +21,20 @@ export default class Text extends Component {
     }
     handleSubmit = () => {
         const httpRequest = new XMLHttpRequest();
-        this.setState({display:'正在提交...'})
-        httpRequest.open('POST', 'http://127.0.0.1:8080/test', true);
-        httpRequest.setRequestHeader("Content-type", "application/json");
-        httpRequest.send(JSON.stringify({ content: this.state.inputValue }));
+        this.setState({ display: '正在提交...' })
+        httpRequest.open('POST', 'http://10.24.9.203:4555/result', true);
+        httpRequest.setRequestHeader("content-type", "application/json");
+        httpRequest.send(JSON.stringify({"content": this.state.text }));
+        // httpRequest.send(JSON.stringify({
+        //     "content": "The New York Times is an American newspaper based in New York City with worldwide influence and readership. "
+        // }));
         httpRequest.onreadystatechange = () => {
             if (httpRequest.readyState === 4 && httpRequest.status === 200) {//验证请求是否发送成功
-                let index = this.mapResultToId.get(JSON.parse(httpRequest.responseText).index)//获取到服务端返回的数据
+                let index = this.mapResultToId.get(JSON.parse(httpRequest.responseText).index-1)//获取到服务端返回的数据
+                console.log(index)
                 this.props.onPress(index)
-                let display = '分类的结果是'+this.props.mapIdtoText.get(index)
-                this.setState({ text: '',display:display})
+                let display = '分类的结果是' + this.props.mapIdtoText.get(index)
+                this.setState({ text: '', display: display })
             }
         }
     }
